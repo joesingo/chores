@@ -32,6 +32,19 @@ Developed for my personal use only, and live at
 - The web app uses Flask. For development simply run `./webapp.py`; in
   production use whatever you like to deploy WSGI applications
 
+## Docker deployment
+
+```shell
+docker build -t chores:v1 .
+docker run \
+    --rm \
+    -v $(pwd)/chores.csv:/app/chores.csv \
+    -v $(pwd)/last_completed.json:/app/last_completed.json \
+    -v $(pwd)/.passwd:/app/.passwd \
+    -p 5000:80 \
+    chores:v1
+```
+
 ## Usage notes
 
 - Requires Python 3.10 or later
