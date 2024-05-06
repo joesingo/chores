@@ -18,6 +18,10 @@ Developed for my personal use only, and live at
   brush dog, 3 days
   mow lawn, 4 weeks
   ```
+- Initialise chore completion dates JSON file:
+  ```shell
+  echo '{}' > last_completed.json
+  ```
 - Generate a password:
 
   ```python
@@ -34,5 +38,3 @@ Developed for my personal use only, and live at
 - The site uses HTTP basic auth and consists of only a single page at `/`
 - `chores.csv` is re-read on every page load, to support modifying the list of
   chores while the site is live
-- The last completion date of each chore is saved in a JSON file at
-  `last_completed.json`
