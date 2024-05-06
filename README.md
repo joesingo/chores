@@ -30,6 +30,7 @@ Developed for my personal use only, and live at
 
 ## Usage notes
 
+- Requires Python 3.7 or later
 - The site uses HTTP basic auth and consists of only a single page at `/`
 - `chores.csv` is re-read on every page load, to support modifying the list of
   chores while the site is live
