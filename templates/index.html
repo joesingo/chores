@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+        <title>chores</title>
+        <link rel="stylesheet" href="/static/style.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        <h1>chores</h1>
+        <form action="/complete" method="POST">
+            <button id="submit">mark as complete</button>
+            <ol id="chores">
+            {% for chore in chores %}
+                <li>
+                    <label>
+                        <div>
+                            <b>{{ chore.name }}</b>
+                            <br />
+                            {% if chore.due_in_days == 0 %}
+                                <b class="due">today</b>
+                            {% elif chore.due_in_days == 1 %}
+                                <b class="notdueyet">tomorrow</b>
+                            {% elif chore.due_in_days == -1 %}
+                                <b class="due">yesterday</b>
+                            {% elif chore.due_in_days < 0 %}
+                                <b class="due">{{ -chore.due_in_days }}</b> days ago
+                            {% else %}
+                                in <b class="notdueyet">{{ chore.due_in_days }}</b> days
+                            {% endif %}
+                            <br />
+                            (repeats every {{ chore.frequency }})
+                        </div>
+                        <input type="checkbox" name="completed" value="{{ chore.name }}" />
+                    </label>
+                </li>
+            {% endfor %}
+            </ol>
+        </form>
+    </body>
+</html>
